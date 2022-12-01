@@ -1,0 +1,4 @@
+dist/
+node*
+*.json
+test.html

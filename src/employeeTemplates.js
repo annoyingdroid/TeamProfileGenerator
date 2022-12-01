@@ -1,23 +1,14 @@
-class Employee {
-    constructor (name, email, id){
-        this.name = name;
-        this.email = email;
-        this.id = id;
-    }
+const engineerCard = function (engineer) {
+}
 
-    getName(){
-        return this.name;
-    }
+const internCard = function (intern) {
+    
+}
 
-    getId(){
-        return this.id;
-    }
+const managerCard = function (manager) {
 
-    getEmail(){
-        return this.email;
-    }
+}
 
-    getRole(){
-        return 'Employee';
-    }
+const pageBase = function (employeeCards) {
+
 }
