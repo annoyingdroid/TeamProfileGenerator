@@ -186,7 +186,7 @@ const addManager = () => {
             name: 'office',
             message: 'Please enter the office number for the manager',
             validate: office => {
-                if(oficce)
+                if(office)
                     return true;
                 else {
                     console.log("Please enter an office number");
