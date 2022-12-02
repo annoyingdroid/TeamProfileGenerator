@@ -1,3 +1,4 @@
+const buildPage = require('./src/employeeTemplates');
 const Engineer = require("./lib/Engineer");
 const Manager = require("./lib/Manager");
 const Intern = require("./lib/Intern");
@@ -23,7 +24,7 @@ const generateTeam = () => {
                 case 'Get Current Team': console.log(curTeam); generateTeam(); break;
                 case 'Add Employee': addEmployee(); break;
                 case 'Add Manager': addManager(); break;
-                case 'Exit': generateHTML(); break;
+                case 'Exit': generateHTML(curTeam); break;
                 default: break;
             }
         })
@@ -37,20 +38,41 @@ const addEmployee = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'Please enter the name of the employee'
-
+            message: 'Please enter the name of the employee',
+            validate: name => {
+                if(name)
+                    return true;
+                else {
+                    console.log("Please enter a name");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'employeeID',
-            message: 'Please enter the ID for the employee'
-            
+            message: 'Please enter the ID for the employee',
+            validate: id => {
+                if(id)
+                    return true;
+                else {
+                    console.log("Please enter a id");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'email',
-            message: 'Please enter the email of the employee'
-
+            message: 'Please enter the email of the employee',
+            validate: email => {
+                if(email)
+                    return true;
+                else {
+                    console.log("Please enter an email");
+                    return false;
+                }
+            }
         },
         {
             type: 'list',
@@ -61,13 +83,29 @@ const addEmployee = () => {
         {
             type: 'input',
             name: 'github',
-            message: 'Please enter the github username for the employee'
+            message: 'Please enter the github username for the employee',
+            when: input => input.role == "Engineer",
+            validate: username => {
+                if(username)
+                    return true;
+                else {
+                    console.log("Please enter a username");
+                    return false;
+                }
             
         },
         {
             type: 'input',
             name: 'school',
-            message: 'Please enter the school for the employee'
+            message: 'Please enter the school for the employee',
+            hen: input => input.role == "Intern",
+            validate: school => {
+                if(school)
+                    return true;
+                else {
+                    console.log("Please enter a school");
+                    return false;
+                }
             
         },
         {
@@ -105,26 +143,52 @@ const addManager = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'Please enter the name of the manager'
-
+            message: 'Please enter the name of the manager',
+            validate: name => {
+                if(name)
+                    return true;
+                else {
+                    console.log("Please enter a name");
+                    return false;
+                }
         },
         {
             type: 'input',
             name: 'managerID',
-            message: 'Please enter the ID for the manager'
-            
+            message: 'Please enter the ID for the manager',
+            validate: id => {
+                if(id)
+                    return true;
+                else {
+                    console.log("Please enter a id");
+                    return false;
+                }
         },
         {
             type: 'input',
             name: 'email',
-            message: 'Please enter the email for the manager'
-            
+            message: 'Please enter the email for the manager',
+            validate: email => {
+                if(email)
+                    return true;
+                else {
+                    console.log("Please enter an email");
+                    return false;
+                }
+            }
         },
         {
             type: 'input',
             name: 'office',
-            message: 'Please enter the office number for the manager'
-            
+            message: 'Please enter the office number for the manager',
+            validate: office => {
+                if(oficce)
+                    return true;
+                else {
+                    console.log("Please enter an office number");
+                    return false;
+                }
+            }
         },
         {
             type: 'confirm',
@@ -147,16 +211,18 @@ const addManager = () => {
     });
 }
 
-generateHTML = () => {
-    var i = 0;
-    while (i < curTeam.length){
-        switch(curTeam[i].getRole()){
-            case 'Engineer': i++;
-            case 'Intern': i++;
-            case 'Manager': i++;
-            default: break;
+generateHTML = (data) => {
+    console.log(data);
+    var newPage = buildPage(data);
+    fs.writeFile('./dist/index.html', newPage , (err) => {
+            if(err) {
+                console.log(err);
+            } else {
+                console.log("File Written Successfully");
+            }
         }
-    }
+    );
+    
 }
 
 generateTeam();
