@@ -84,7 +84,7 @@ const addEmployee = () => {
             type: 'input',
             name: 'github',
             message: 'Please enter the github username for the employee',
-            when: input => input.role == "Engineer",
+            when: input => input.role == 'Engineer',
             validate: username => {
                 if(username)
                     return true;
@@ -98,7 +98,7 @@ const addEmployee = () => {
             type: 'input',
             name: 'school',
             message: 'Please enter the school for the employee',
-            when: input => input.role == "Intern",
+            when: input => input.role == 'Intern',
             validate: school => {
                 if(school)
                     return true;
@@ -122,9 +122,11 @@ const addEmployee = () => {
             case 'Engineer':
                 exportEmp = new Engineer(name, email, employeeID, github)
                 curTeam.push(exportEmp);
+                break;
             case 'Intern':
                 exportEmp = new Intern(name, email, employeeID, school)
                 curTeam.push(exportEmp);
+                break;
             default: break;
         }
 
