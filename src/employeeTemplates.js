@@ -86,7 +86,7 @@ const pageEnd = function () {
 }
 
 const buildPage = (pageData) => {
-    var i = 1;
+    var i = 0;
     var pageGen = [];
 
     pageGen.push(pageStart());
