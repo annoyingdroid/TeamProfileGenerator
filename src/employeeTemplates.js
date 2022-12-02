@@ -95,7 +95,7 @@ const buildPage = (pageData) => {
         switch(pageData[i].getRole()){
             case 'Engineer': pageGen.push(engineerCard(pageData[i])) ; i++; break;
             case 'Intern': pageGen.push(internCard(pageData[i])); i++; break;
-            case 'Manager': newPage.push(managerCard(pageData[i])); i++; break;
+            case 'Manager': pageGen.push(managerCard(pageData[i])); i++; break;
             default: break;
         }
     }
