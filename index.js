@@ -98,7 +98,7 @@ const addEmployee = () => {
             type: 'input',
             name: 'school',
             message: 'Please enter the school for the employee',
-            hen: input => input.role == "Intern",
+            when: input => input.role == "Intern",
             validate: school => {
                 if(school)
                     return true;
