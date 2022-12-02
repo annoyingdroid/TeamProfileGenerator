@@ -1,4 +1,4 @@
 dist/
 node*
-*.json
+package-lock.json
 test.html
