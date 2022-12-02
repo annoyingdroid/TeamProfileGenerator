@@ -92,7 +92,7 @@ const addEmployee = () => {
                     console.log("Please enter a username");
                     return false;
                 }
-            
+            }
         },
         {
             type: 'input',
@@ -106,7 +106,7 @@ const addEmployee = () => {
                     console.log("Please enter a school");
                     return false;
                 }
-            
+            }
         },
         {
             type: 'confirm',
@@ -151,6 +151,7 @@ const addManager = () => {
                     console.log("Please enter a name");
                     return false;
                 }
+            }
         },
         {
             type: 'input',
@@ -163,6 +164,7 @@ const addManager = () => {
                     console.log("Please enter a id");
                     return false;
                 }
+            }
         },
         {
             type: 'input',
